@@ -33,6 +33,8 @@ markdown_extensions:
 pages:
 - Home: 'index.md'
 - Installation: 'installation.md'
+- Usage: 'usage.md'
+- Themes: 'themes.md'
 
 extra_css:
   - 'stylesheets/extra.css'

@@ -1,5 +1,3 @@
-## Composer
-
 Install [composer](http://packagist.org) and run the following command to get the latest version:
 
 	composer require attire/driver
@@ -13,10 +11,14 @@ $config['composer_autoload'] = TRUE;
 
 If you have your `vendor/` directory located somewhere else, you can opt to set a specific path as well:
 
-<!-- {% highlight php startinline %}
+``` php
 <?php
 $config['composer_autoload'] = '/path/to/vendor/autoload.php';
-?>{% endhighlight %} -->
+```
+
+Copy the config file inside your application config directory:
+
+	cp path/to/vendor/attire/Driver/dist/config/attire.php application/config/
 
 ### Directory Structure
 
@@ -32,16 +34,7 @@ Where:
 * **APPPATH** is Codeigniter's principal directory, where all your controllers, models and views are placed.
 * **FCPATH** is Codeigniter's secured installation directory, where your `index.php` file is placed (normally outside the application directory).
 
-### Assets permissions
+<!-- !!! tip
+	Install this additional security components in your server (Optional).
 
-Set the assets directory with writable permissions.
-
-	sudo chmod 0777 assets/
-
-### Config File
-
-Copy `dist/config/attire.php` file inside your config directory:
-
-	+-APPPATH/
-	| +-config/
-	| | +-attire.php
+	* [suPHP](http://www.suphp.org/Home.html) is a tool for executing PHP scripts with the permissions of their owners. -->
