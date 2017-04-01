@@ -15,7 +15,6 @@ Build on top on great technology.
 
 ## Templates
 
-
 ![Bootstrap](images/bootstrap-demo.png) | ![Material Design](images/material-design-demo.png) | ![Pure](images/pure-demo.png)
 :------------: | :-------------: | :------------:
 Twitter Bootstrap | Google Material Design | Yahoo Pure

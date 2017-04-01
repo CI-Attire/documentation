@@ -1,5 +1,6 @@
+## Overview
 
-## Loading
+Attire uses a `Twig_Environment` class to store the environment configuration, functions, filters, globals and extensions, and a `Twig_LoaderInterface` to locate templates. It helps decouple your templates from the file system and other dependencies. For example, if you want to change the directory where your templates are stored, you can do so by simply changing the path in your config file `path/to/application/config/attire.php`.
 
 You can use the CI's `auto-loader` method to include Attire in your application:
 
@@ -22,10 +23,7 @@ class Welcome extends CI_Controller
 }
 ```
 
-Attire uses a `Twig_LoaderInterface` to locate templates, and a `Twig_Environment` to store the settings, but every aspect is controlled by his own driver.
-
----
-## Rendering
+## Render
 
 The `render` method loads a view or a set of views passed as the first param. If you want to pass variables to that view you can set an array as the second param:
 
@@ -84,7 +82,7 @@ Functions are defined in the exact same way as Filters, the Attire_functions dri
 
 ``` php
 <?php
-$this->attire->functions->add('hello_world', function(){ return 'hello_world'; });
+$this->attire->addFunction('hello_world', function(){ return 'hello_world'; });
 ```
 
 Now you can use it in a template:
