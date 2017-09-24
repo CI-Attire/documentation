@@ -11,8 +11,8 @@ copyright: 'Copyright &copy; 2016 David Sosa Valdes'
 theme: 'material'
 extra:
   palette:
-    primary: 'indigo'
-    accent: 'indigo'
+    primary: 'blue'
+    accent: 'light blue'
   font:
     text: 'Ubuntu'
     code: 'Ubuntu Mono'
