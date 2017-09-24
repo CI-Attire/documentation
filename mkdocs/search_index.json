@@ -1,0 +1,74 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Overview\n\u00b6\n\n\nAttire\n is a Codeigniter Driver for fast development and maintenance of structured templates, layouts and assets.\n\n\nFeatures\n\u00b6\n\n\nBuild on top on great technology.\n\n\n\n\nSolid Base\n: Built with \nTwig Engine\n.\n\n\nHighly Customizable\n: Easily customize to work exactly how you want it to.\n\n\nExtendable\n: The template system allows you to build multiple themes and layouts.\n\n\nManageable\n: Manage your assets, templates and layouts by taking care of preprocessors and dependencies.\n\n\nCompressible\n: Build with minification and caching extensions.\n\n\nSecure\n: Evaluate untrusted template code using a sandbox mode and output escaping.\n\n\n\n\nTemplates\n\u00b6\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTwitter Bootstrap\n\n\nGoogle Material Design\n\n\nYahoo Pure",
+            "title": "Home"
+        },
+        {
+            "location": "/#overview",
+            "text": "Attire  is a Codeigniter Driver for fast development and maintenance of structured templates, layouts and assets.",
+            "title": "Overview"
+        },
+        {
+            "location": "/#features",
+            "text": "Build on top on great technology.   Solid Base : Built with  Twig Engine .  Highly Customizable : Easily customize to work exactly how you want it to.  Extendable : The template system allows you to build multiple themes and layouts.  Manageable : Manage your assets, templates and layouts by taking care of preprocessors and dependencies.  Compressible : Build with minification and caching extensions.  Secure : Evaluate untrusted template code using a sandbox mode and output escaping.",
+            "title": "Features"
+        },
+        {
+            "location": "/#templates",
+            "text": "Twitter Bootstrap  Google Material Design  Yahoo Pure",
+            "title": "Templates"
+        },
+        {
+            "location": "/installation/",
+            "text": "Composer\n\u00b6\n\n\nInstall \ncomposer\n and run the following command to get the latest version:\n\n\ncomposer require attire/driver\n\n\n\n\n\nBut sure to also enable this setting in \napplication/config/config.php\n:\n\n\n<?php\n\n\n$config\n[\n'composer_autoload'\n]\n \n=\n \nTRUE\n;\n\n\n\n\n\n\nWith this CodeIgniter can look for the Composer auto-loader script, also if you have your \nvendor/\n directory located somewhere else, you can opt to set a specific path as well:\n\n\n<?php\n\n\n$config\n[\n'composer_autoload'\n]\n \n=\n \n'/path/to/vendor/autoload.php'\n;\n\n\n\n\n\n\n\n\n\nDefaults\n\u00b6\n\n\nCopy the config file inside your application config directory:\n\n\ncp path/to/vendor/attire/Driver/dist/config/attire.php application/config/\n\n\n\n\n\nFinally copy the main theme inside your themes directory:\n\n\ncp path/to/vendor/attire/Driver/dist/themes/attire path/to/application/themes/",
+            "title": "Installation"
+        },
+        {
+            "location": "/installation/#composer",
+            "text": "Install  composer  and run the following command to get the latest version:  composer require attire/driver  But sure to also enable this setting in  application/config/config.php :  <?php  $config [ 'composer_autoload' ]   =   TRUE ;   With this CodeIgniter can look for the Composer auto-loader script, also if you have your  vendor/  directory located somewhere else, you can opt to set a specific path as well:  <?php  $config [ 'composer_autoload' ]   =   '/path/to/vendor/autoload.php' ;",
+            "title": "Composer"
+        },
+        {
+            "location": "/installation/#defaults",
+            "text": "Copy the config file inside your application config directory:  cp path/to/vendor/attire/Driver/dist/config/attire.php application/config/  Finally copy the main theme inside your themes directory:  cp path/to/vendor/attire/Driver/dist/themes/attire path/to/application/themes/",
+            "title": "Defaults"
+        },
+        {
+            "location": "/usage/",
+            "text": "Overview\n\u00b6\n\n\nAttire uses a \nTwig_Environment\n class to store the environment configuration, functions, filters, globals and extensions, and a \nTwig_LoaderInterface\n to locate templates. It helps decouple your templates from the file system and other dependencies. For example, if you want to change the directory where your templates are stored, you can do so by simply changing the path in your config file \npath/to/application/config/attire.php\n.\n\n\nYou can use the CI's \nauto-loader\n method to include Attire in your application:\n\n\n<?php\n\n\n$autoload\n[\n'libraries'\n]\n \n=\n \narray\n(\n'attire'\n);\n\n\n\n\n\n\nOr you can load it inside your controller:\n\n\n<?php\n \ndefined\n(\n'BASEPATH'\n)\n \nOR\n \nexit\n(\n'No direct script access allowed'\n);\n\n\n\nclass\n \nWelcome\n \nextends\n \nCI_Controller\n\n\n{\n\n    \npublic\n \nfunction\n \nindex\n()\n\n    \n{\n\n        \n$this\n->\nload\n->\nlibrary\n(\n'attire'\n);\n\n    \n}\n\n\n}\n\n\n\n\n\n\nRender\n\u00b6\n\n\nThe \nrender\n method loads a view or a set of views passed as the first param. If you want to pass variables to that view you can set an array as the second param:\n\n\n<?php\n\n\n$this\n->\nattire\n->\nrender\n(\n'foo'\n,\n \n[\n'param1'\n \n=>\n \n'value1'\n]);\n\n\n\n\n\n\n\n\nNote\n\n\nNotice that you only need to specify the view\u2019s name without the extension \n.twig\n. Optionally you can set any of the available extensions (defaults: \n.twig.php, .php, .php.twig\n).\n\n\n\n\n\n\nGlobals\n\u00b6\n\n\nGlobals are variables witch are accessible from anywhere within a template. They\u2019re useful when you need to have access to some data no matter which view you render. You can declare a global variable using the \naddGlobal()\n method:\n\n\n<?php\n\n\n$this\n->\nattire\n->\naddGlobal\n(\n'text'\n,\n \nnew\n \nText\n());\n\n\n\n\n\n\nThe variable\u2019s name is the first param passed and their value is the second param. Next you can use it as follows:\n\n\n<\np\n>\n{{ text.lipsum(40) }}\n</\np\n>\n\n\n\n\n\n\n\n\nFilters\n\u00b6\n\n\nAttire implements \nTwig_SimpleFilter\n objects to create filters. This is useful when you\u2019re integrating new functions. Here's an example:\n\n\n<?php\n\n\n// Closure function\n\n\n$this\n->\nattire\n->\naddFilter\n(\n'rot13'\n,\n \nfunction\n(\n$string\n)\n \n{\n\n    \nreturn\n \nstr_rot13\n(\n$string\n);\n\n\n}));\n\n\n// Or a simple php function\n\n\n$this\n->\nattire\n->\naddFilter\n(\n'rot13'\n,\n \n'str_rot13'\n)\n\n\n// Or a class method\n\n\n$this\n->\nattire\n->\naddFilter\n(\n'rot13'\n,\n \narray\n(\n'SomeClass'\n,\n \n'rot13Filter'\n));\n\n\n\n\n\n\nThe filter\u2019s name is the first param passed and the second it\u2019s the closure function. Now you can use it in a template:\n\n\n{{ 'Twig'|rot13 }}\n{# will output Gjvt #}\n\n\n\n\n\n\n\nFunctions\n\u00b6\n\n\nFunctions are defined in the exact same way as Filters, the Attire_functions driver with the add() method allows you to create new functions as follows:\n\n\n<?php\n\n\n$this\n->\nattire\n->\naddFunction\n(\n'hello_world'\n,\n \nfunction\n(){\n \nreturn\n \n'hello_world'\n;\n \n});\n\n\n\n\n\n\nNow you can use it in a template:\n\n\n<\np\n>\n{{hello_world()}}\n</\np\n>\n\n\n<!-- prints hello_world -->",
+            "title": "Usage"
+        },
+        {
+            "location": "/usage/#overview",
+            "text": "Attire uses a  Twig_Environment  class to store the environment configuration, functions, filters, globals and extensions, and a  Twig_LoaderInterface  to locate templates. It helps decouple your templates from the file system and other dependencies. For example, if you want to change the directory where your templates are stored, you can do so by simply changing the path in your config file  path/to/application/config/attire.php .  You can use the CI's  auto-loader  method to include Attire in your application:  <?php  $autoload [ 'libraries' ]   =   array ( 'attire' );   Or you can load it inside your controller:  <?php   defined ( 'BASEPATH' )   OR   exit ( 'No direct script access allowed' );  class   Welcome   extends   CI_Controller  { \n     public   function   index () \n     { \n         $this -> load -> library ( 'attire' ); \n     }  }",
+            "title": "Overview"
+        },
+        {
+            "location": "/usage/#render",
+            "text": "The  render  method loads a view or a set of views passed as the first param. If you want to pass variables to that view you can set an array as the second param:  <?php  $this -> attire -> render ( 'foo' ,   [ 'param1'   =>   'value1' ]);    Note  Notice that you only need to specify the view\u2019s name without the extension  .twig . Optionally you can set any of the available extensions (defaults:  .twig.php, .php, .php.twig ).",
+            "title": "Render"
+        },
+        {
+            "location": "/usage/#globals",
+            "text": "Globals are variables witch are accessible from anywhere within a template. They\u2019re useful when you need to have access to some data no matter which view you render. You can declare a global variable using the  addGlobal()  method:  <?php  $this -> attire -> addGlobal ( 'text' ,   new   Text ());   The variable\u2019s name is the first param passed and their value is the second param. Next you can use it as follows:  < p > {{ text.lipsum(40) }} </ p >",
+            "title": "Globals"
+        },
+        {
+            "location": "/usage/#filters",
+            "text": "Attire implements  Twig_SimpleFilter  objects to create filters. This is useful when you\u2019re integrating new functions. Here's an example:  <?php  // Closure function  $this -> attire -> addFilter ( 'rot13' ,   function ( $string )   { \n     return   str_rot13 ( $string );  }));  // Or a simple php function  $this -> attire -> addFilter ( 'rot13' ,   'str_rot13' )  // Or a class method  $this -> attire -> addFilter ( 'rot13' ,   array ( 'SomeClass' ,   'rot13Filter' ));   The filter\u2019s name is the first param passed and the second it\u2019s the closure function. Now you can use it in a template:  {{ 'Twig'|rot13 }}\n{# will output Gjvt #}",
+            "title": "Filters"
+        },
+        {
+            "location": "/usage/#functions",
+            "text": "Functions are defined in the exact same way as Filters, the Attire_functions driver with the add() method allows you to create new functions as follows:  <?php  $this -> attire -> addFunction ( 'hello_world' ,   function (){   return   'hello_world' ;   });   Now you can use it in a template:  < p > {{hello_world()}} </ p >  <!-- prints hello_world -->",
+            "title": "Functions"
+        },
+        {
+            "location": "/themes/",
+            "text": "There are some available themes using different CSS Frameworks which are excellent start point for your next project. Here\u2019s an example with the Bootstrap Framework.\n\n\nFirst, install the new theme with composer:\n\n\ncomposer require attire/bootstrap-theme\n\n\n\n\n\nNext open the config file \npath/to/application/config/attire.php\n and set the theme:\n\n\n<?php\n\n\n$config\n[\n'theme'\n]\n \n=\n \n[\n\n    \n'name'\n   \n=>\n \n'bootstrap'\n,\n\n    \n'layout'\n \n=>\n \n'jumbotron'\n,\n\n\n];\n\n\n\n\n\n\nAnd finally load it with the \nrender()\n method:\n\n\n<?php\n \ndefined\n(\n'BASEPATH'\n)\n \nOR\n \nexit\n(\n'No direct script access allowed'\n);\n\n\n\nclass\n \nWelcome\n \nextends\n \nCI_Controller\n\n\n{\n\n    \npublic\n \nfunction\n \nindex\n()\n\n    \n{\n\n        \n$this\n->\nload\n->\nlibrary\n(\n'attire'\n);\n\n        \n$this\n->\nattire\n->\nrender\n();\n\n    \n}\n\n\n}\n\n\n\n\n\n\nRefresh your browser to see the changes:\n\n\n\n\nAlso you can set a theme with the \nsetTheme\n method as well:\n\n\n<?php\n\n\nclass\n \nWelcome\n \nextends\n \nCI_Controller\n\n\n{\n\n    \npublic\n \nfunction\n \nindex\n()\n\n    \n{\n\n        \n$this\n->\nload\n->\nlibrary\n(\n'attire'\n);\n\n        \n$this\n->\nattire\n->\nsetTheme\n(\n'bootstrap'\n)\n->\nsetLayout\n(\n'jumbotron'\n);\n\n        \n$this\n->\nattire\n->\nrender\n();\n\n    \n}\n\n\n}\n\n\n\n\n\n\nNow you can use the \nTwitter Bootstrap\n framework in your application.",
+            "title": "Themes"
+        }
+    ]
+}
